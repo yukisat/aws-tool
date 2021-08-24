@@ -7,7 +7,7 @@ ec2-snapshot.sh
 　　「Key:"Auto_SS" Values:"true"」のタグが付与されます。  
 　　※1時間以内に取得している場合は、実行されません  
 ec2-delete-snapshot.sh  
-　　「Key:"Auto_SS" Values:"true"」のタグが付いているスナップショットを削除します。(デフォルトは3日前のスナップショット)  
+　　「Key:"Auto_SS" Values:"true"」のタグが付いているスナップショットを削除します。(デフォルトは3日以前のスナップショットを削除)  
 
 ### ログインした時にスナップショットを自動で取得
 Bash の場合

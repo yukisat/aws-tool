@@ -35,10 +35,10 @@ bash ~/ec2-snapshot-tool/ec2-snapshot.sh &
 ----
 ```
 
-### cron 設定
+### cron 設定 (毎日 AM1:00 に実行の場合)
 ```
 crontab -e
 ----
-* * * * * bash ~/ec2-snapshot-tool/ec2-delete-snapshot.sh
+* 1 * * * bash ~/ec2-snapshot-tool/ec2-delete-snapshot.sh
 ----
 ```

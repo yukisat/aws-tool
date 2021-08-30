@@ -10,6 +10,22 @@ ec2-delete-snapshot.sh
 　　「Key:"Auto_SS" Values:"true"」のタグが付いているスナップショットを削除します。(デフォルトは3日以前のスナップショットを削除)  
   cronで設定してください。  
 
+### インストール
+```
+git clone git://github.com/yukisat/ec2-snapshot-tool
+
+tree ~/ec2-snapshot-tool/
+----
+~/ec2-snapshot-tool/
+├── EBS-SnapShot-Policy.json
+├── ec2-delete-snapshot.sh
+├── ec2-snapshot.sh
+└── README.md
+
+0 directories, 4 files
+----
+```
+
 ### ログインした時にスナップショットを自動で取得
 Bash の場合
 ```

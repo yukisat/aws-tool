@@ -36,7 +36,9 @@ bash ~/ec2-snapshot-tool/ec2-snapshot.sh &
 ```
 
 ### cron 設定
+```
 crontab -e
 ----
 * * * * * bash ~/ec2-snapshot-tool/ec2-delete-snapshot.sh
 ----
+```

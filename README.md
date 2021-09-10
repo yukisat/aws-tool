@@ -40,6 +40,6 @@ bash ~/ec2-snapshot-tool/ec2-snapshot.sh &
 crontab -e
 ----
 ## ec2-snapshot-tool
-* 1 * * * bash ~/ec2-snapshot-tool/ec2-delete-snapshot.sh
+00 1 * * * bash ~/ec2-snapshot-tool/ec2-delete-snapshot.sh
 ----
 ```

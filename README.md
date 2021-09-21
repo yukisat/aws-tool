@@ -29,7 +29,7 @@ tree ~/ec2-snapshot-tool/
 ### ログインした時にスナップショットを自動で取得
 Bash の場合
 ```
-vi ~/.bashrc
+vi ~/.bash_profile
 ----
 bash ~/ec2-snapshot-tool/ec2-snapshot.sh &
 ----

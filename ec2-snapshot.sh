@@ -32,7 +32,4 @@ if [ -z "$Snapshot" ]; then
     for VolumeId in ${EC2_VolumeIds[@]}; do
       aws ec2 create-snapshot --volume-id ${VolumeId} --tag-specifications 'ResourceType="snapshot",Tags=[{Key="Name",Value='$MyInstance'},{Key="Auto_SS",Value="true"}]' --description "Auto snapshot at root login" 2>&1 >> ${Log_File}
     done
-    echo "Automatic snapshot was performed"
-  else
-    echo "Automatic snapshot does not run"
 fi

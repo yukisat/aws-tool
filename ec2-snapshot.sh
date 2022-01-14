@@ -8,6 +8,7 @@ MyInstance=`hostname`
 Target_Date=$(date "+%Y-%m-%dT%H:%M" -u -d '-1 hours')
 Delete_Date=$(date "+%Y-%m-%dT%H:%M" -u -d '-1 day')
 Now_Date=$(date "+%Y-%m-%dT%H:%M" -u)
+Tag_Date=$(date "+%Y-%m-%d-%H-%M")
 Log_File="/var/log/ec2-snapshot.log"
 
 export AWS_DEFAULT_REGION=${Region}
@@ -23,13 +24,13 @@ EC2_VolumeIds=(`echo $EC2_VolumeId`)
 
 ## スナップショットの作成 (1時間以内にスナップショットが存在する場合作成しない)
 Snapshot=$(aws ec2 describe-snapshots \
-  --filters "Name=tag:Auto_SS,Values=true" \
+  --filters "Name=tag:Auto_SS_TG,Values=$InstanceId" \
   --region ap-northeast-1 \
   --query "Snapshots[?(StartTime>='$Target_Date') && (StartTime<='$Now_Date')].[SnapshotId,StartTime]" \
   --output text | head -n1)
 
 if [ -z "$Snapshot" ]; then
     for VolumeId in ${EC2_VolumeIds[@]}; do
-      aws ec2 create-snapshot --volume-id ${VolumeId} --tag-specifications 'ResourceType="snapshot",Tags=[{Key="Name",Value='$MyInstance'},{Key="Auto_SS",Value="true"}]' --description "Auto snapshot at root login" 2>&1 >> ${Log_File}
+      aws ec2 create-snapshot --volume-id ${VolumeId} --tag-specifications 'ResourceType="snapshot",Tags=[{Key="Name",Value='$MyInstance'_'$Tag_Date'},{Key="Auto_SS_TG",Value='$InstanceId'}]' --description "Auto snapshot at root login" 2>&1 >> ${Log_File}
     done
 fi

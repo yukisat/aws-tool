@@ -12,7 +12,7 @@ ec2-delete-snapshot.sh
 
 ### インストール
 ```
-git clone git://github.com/yukisat/ec2-snapshot-tool
+git clone https://github.com/yukisat/ec2-snapshot-tool
 
 tree ~/ec2-snapshot-tool/
 ----
